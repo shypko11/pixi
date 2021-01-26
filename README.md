@@ -1,3 +1,5 @@
 match 3 game in PixiJS
-clone files
-run index.html with Live Server
+ 
+1 clone files
+
+2 run index.html with Live Server
