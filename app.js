@@ -28,7 +28,7 @@ window.onload = function () {
         constructor(_index, x, y, _onCreateEnd) {
             super();
             let imgName = cellImages[_index];
-          
+
             this.sprite = new PIXI.Sprite(
                 PIXI.loader.resources[imgName].texture
             );
@@ -171,7 +171,7 @@ window.onload = function () {
 
     async function generateNewCells(_call) {
         if (cellsArr) {
-            for (let i = 0; i < cellsArr.length; i++) {
+            for (let i = (cellsArr.length - 1); i >= 0; i--) {
                 for (let j = 0; j < cellsArr[i].length; j++) {
                     if (!cellsArr[i][j]) {
                         await new Promise(function (resolve, releject) {
@@ -179,7 +179,7 @@ window.onload = function () {
                         });
                     }
                 }
-                if (i === cellsArr.length - 1) {
+                if (i === 0) {
                     needGenerateNewCells = false;
                     _call && _call();
                 }
@@ -244,6 +244,7 @@ window.onload = function () {
                 _sprite.x = _params.x;
                 _params.callbackEnd && _params.callbackEnd();
                 _params.callback && _params.callback();
+                tween.kill();
             }
         });
     }
